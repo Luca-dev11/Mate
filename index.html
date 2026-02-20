@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator Mate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Calculator Mate</h1>
+
+<input type="number" id="n1" placeholder="Primul număr">
+<input type="number" id="n2" placeholder="Al doilea număr">
+
+<br><br>
+
+<button onclick="aduna()">+</button>
+<button onclick="scade()">-</button>
+<button onclick="inmulteste()">×</button>
+<button onclick="imparte()">÷</button>
+<button onclick="radical()">√ (din primul număr)</button>
+
+<p id="rezultat"></p>
+
+<hr>
+
+<h2>Putere</h2>
+
+<input type="number" id="baza" placeholder="Baza">
+<input type="number" id="exponent" placeholder="Exponent">
+
+<button onclick="putere()">Calculează puterea</button>
+
+<script src="script.js"></script>
+<h2>Fracție vizuală</h2>
+
+<input type="number" id="numarator" placeholder="Numărător">
+<input type="number" id="numitor" placeholder="Numitor">
+
+<button onclick="deseneazaFractie()">Desenează fracția</button>
+
+<br><br>
+
+<canvas id="canvasFractie" width="300" height="300"></canvas>
