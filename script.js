@@ -4,52 +4,66 @@ function iaNumere() {
     return { n1, n2 };
 }
 
+function afiseazaRezultat(text) {
+    const rez = document.getElementById("rezultat");
+    rez.innerText = text;
+
+    rez.style.transform = "scale(1.2)";
+    rez.style.transition = "0.2s";
+
+    setTimeout(() => {
+        rez.style.transform = "scale(1)";
+    }, 200);
+}
+
 function aduna() {
     let { n1, n2 } = iaNumere();
-    document.getElementById("rezultat").innerText = "Rezultat: " + (n1 + n2);
+    afiseazaRezultat("Rezultat: " + (n1 + n2));
 }
 
 function scade() {
     let { n1, n2 } = iaNumere();
-    document.getElementById("rezultat").innerText = "Rezultat: " + (n1 - n2);
+    afiseazaRezultat("Rezultat: " + (n1 - n2));
 }
 
 function inmulteste() {
     let { n1, n2 } = iaNumere();
-    document.getElementById("rezultat").innerText = "Rezultat: " + (n1 * n2);
+    afiseazaRezultat("Rezultat: " + (n1 * n2));
 }
 
 function imparte() {
     let { n1, n2 } = iaNumere();
 
     if (n2 === 0) {
-        document.getElementById("rezultat").innerText = "Nu poți împărți la 0!";
+        afiseazaRezultat("Nu poți împărți la 0!");
         return;
     }
 
-    document.getElementById("rezultat").innerText = "Rezultat: " + (n1 / n2);
+    afiseazaRezultat("Rezultat: " + (n1 / n2));
 }
 
 function radical() {
     let n1 = Number(document.getElementById("n1").value);
 
     if (n1 < 0) {
-        document.getElementById("rezultat").innerText = "Nu există radical din număr negativ!";
+        afiseazaRezultat("Nu există radical din număr negativ!");
         return;
     }
 
-    document.getElementById("rezultat").innerText = "Rezultat: " + Math.sqrt(n1);
-
+    afiseazaRezultat("Rezultat: " + Math.sqrt(n1));
 }
+
 function putere() {
     let baza = Number(document.getElementById("baza").value);
     let exponent = Number(document.getElementById("exponent").value);
 
     let rezultat = Math.pow(baza, exponent);
 
-    document.getElementById("rezultat").innerText =
-        baza + " la puterea " + exponent + " = " + rezultat;
+    afiseazaRezultat(
+        baza + " la puterea " + exponent + " = " + rezultat
+    );
 }
+
 function deseneazaFractie() {
     let numarator = Number(document.getElementById("numarator").value);
     let numitor = Number(document.getElementById("numitor").value);
@@ -70,6 +84,9 @@ function deseneazaFractie() {
 
     let unghiPeBucata = (2 * Math.PI) / numitor;
 
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = "rgba(0,0,0,0.2)";
+
     for (let i = 0; i < numitor; i++) {
         ctx.beginPath();
         ctx.moveTo(centruX, centruY);
@@ -87,6 +104,8 @@ function deseneazaFractie() {
             ctx.fill();
         }
 
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#333";
         ctx.stroke();
     }
 }
